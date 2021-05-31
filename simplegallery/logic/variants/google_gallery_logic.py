@@ -35,16 +35,11 @@ class GoogleGalleryLogic(BaseGalleryLogic):
         :return updated images data dictionary
         """
 
-        # Get the path to the Firefox webdriver
-        webdriver_path = pkg_resources.resource_filename(
-            "simplegallery", "bin/geckodriver"
-        )
-
         # Configure the driver in headless mode
         options = Options()
         options.headless = True
         spg_common.log(f"Starting Firefox webdriver...")
-        driver = webdriver.Firefox(options=options, executable_path=webdriver_path)
+        driver = webdriver.Firefox(options=options, executable_path="/usr/bin/geckodriver")
 
         # Load the album page
         spg_common.log(f'Loading album from {self.gallery_config["remote_link"]}...')
